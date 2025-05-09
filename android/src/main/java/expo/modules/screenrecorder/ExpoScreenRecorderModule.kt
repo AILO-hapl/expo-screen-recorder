@@ -87,8 +87,12 @@ class ExpoScreenRecorderModule : Module(), HBRecorderListener {
           val display = windowManager.defaultDisplay
           val width = display.width
           val height = display.height
-          hbRecorder!!.setScreenDimensions(height,  width)
-
+          val displayMetrics = appContext.reactContext!!.resources.displayMetrics
+          val screenWidth = displayMetrics.widthPixels
+          val screenHeight = displayMetrics.heightPixels
+          hbRecorder!!.setScreenDimensions(screenHeight, screenWidth)
+//          hbRecorder!!.setScreenDimensions(900,  550)
+          
           if (doesSupportEncoder("h264")) {
             println("doesSupportEncoder")
             hbRecorder!!.setVideoEncoder("H264")
