@@ -83,10 +83,6 @@ class ExpoScreenRecorderModule : Module(), HBRecorderListener {
           // Enable or disable audio based on permissions and micEnabled flag
           hbRecorder!!.isAudioEnabled(micEnabled && permissionsGranted)
           hbRecorder!!.setOutputPath(outputUri!!.toString())
-          val windowManager = activity.windowManager
-          val display = windowManager.defaultDisplay
-          val width = display.width
-          val height = display.height
           val displayMetrics = appContext.reactContext!!.resources.displayMetrics
           val screenWidth = displayMetrics.widthPixels
           val screenHeight = displayMetrics.heightPixels
