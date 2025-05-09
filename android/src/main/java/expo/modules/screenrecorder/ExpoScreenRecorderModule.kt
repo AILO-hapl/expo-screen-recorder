@@ -83,7 +83,11 @@ class ExpoScreenRecorderModule : Module(), HBRecorderListener {
           // Enable or disable audio based on permissions and micEnabled flag
           hbRecorder!!.isAudioEnabled(micEnabled && permissionsGranted)
           hbRecorder!!.setOutputPath(outputUri!!.toString())
-          hbRecorder!!.setScreenDimensions(900, 600)
+          val windowManager = activity.windowManager
+          val display = windowManager.defaultDisplay
+          val width = display.width
+          val height = display.height
+          hbRecorder!!.setScreenDimensions(height,  width)
 
           if (doesSupportEncoder("h264")) {
             println("doesSupportEncoder")
